@@ -1,0 +1,10 @@
+{
+    "mcpServers": {
+        "dev-tools": {
+            "command": "python",
+            "args": [
+                "/absolute/path/to/my-mcp-server/server.py"
+            ]
+        }
+    }
+}

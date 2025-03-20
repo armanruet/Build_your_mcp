@@ -41,6 +41,41 @@ You can run the server in two modes:
    python server.py sse 8000
    ```
 
+## Testing Your MCP Server
+
+### Using the Test Script
+
+The repository includes `app.py`, a test script that simulates an MCP client connecting to your server:
+
+```bash
+# Make sure your virtual environment is activated
+python app.py
+```
+
+This script will:
+1. Start the MCP server in STDIO mode
+2. Send an initialization request
+3. List all available tools
+4. Test each tool with sample parameters
+5. Display the results
+6. Shut down the server
+
+The output will show you the full JSON-RPC communication between the client and server, along with formatted results from each tool.
+
+### Manual Testing with Curl (SSE Mode)
+
+If you're running the server in SSE mode, you can test the connection with curl:
+
+```bash
+# Test the SSE endpoint
+curl -i http://localhost:8000/sse
+
+# Test tool listing (requires a more complex curl command with JSON-RPC)
+curl -X POST http://localhost:8000/messages/ \
+  -H "Content-Type: application/json" \
+  -d '{"jsonrpc":"2.0","id":1,"method":"listTools","params":{}}'
+```
+
 ## Important Implementation Notes
 
 ### Client Support Status
